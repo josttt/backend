@@ -18,6 +18,11 @@ app.get('/2', (req, res) => {
     console.log('2');
 })
 
+app.get('/3', (req, res) => {
+  console.log(req.query);
+  res.render('form.njk', req.query);
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 })
