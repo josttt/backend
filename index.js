@@ -3,6 +3,8 @@ const nunjucks = require('nunjucks');
 const app = express();
 const port = 3000;
 
+app.use(express.urlencoded({extended:true}));
+
 nunjucks.configure('views', {
     autoescape: true,
     express: app,
@@ -21,6 +23,14 @@ app.get('/2', (req, res) => {
 app.get('/3', (req, res) => {
   console.log(req.query);
   res.render('form.njk', req.query);
+})
+
+app.get('/4', (req, res) => {
+  res.render('circle.njk', req.query);
+})
+
+app.post('/4', (req, res) => {
+  res.json(req.body);
 })
 
 app.listen(port, () => {
